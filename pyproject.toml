@@ -5,8 +5,61 @@ description = ""
 authors = ["Gregory M. Kapfhammer <gkapfham@allegheny.edu>"]
 readme = "README.md"
 
+[tool.poetry.scripts]
+bosco = "bosco.main:cli"
+
 [tool.poetry.dependencies]
 python = "^3.11"
+rich = "^10.9.0"
+typer = {extras = ["all"], version = "^0.7.0"}
+
+[tool.poetry.dev-dependencies]
+taskipy = "^1.8.1"
+mypy = "^0.910"
+pytest = "^7.2.0"
+pymarkdownlnt = "^0.9.8"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "==0.1.15"
+symbex = "^1.4"
+pytest-cov = "^4.1.0"
+pytest-xdist = "^3.5.0"
+pytest-clarity = "^1.0.1"
+pytest-randomly = "^3.15.0"
+mdtoc = "^1.3"
+
+[tool.taskipy.variables]
+project = "bosco"
+tests = "tests"
+readme = "../README.md"
+check-command = { var = "ruff check {project} {tests}", recursive = true }
+coverage-test-command = "pytest -s --cov-context=test --cov-fail-under=90 --cov-report term-missing --cov-report json --cov --cov-branch"
+coverage-test-command-silent = "pytest -x --show-capture=no --cov-report term-missing --cov-report json --cov --cov-branch"
+fixformat-command = { var = "ruff format {project} {tests}", recursive = true }
+format-command = { var = "ruff format --check {project} {tests}", recursive = true }
+markdownlint-command = { var = "poetry run pymarkdown --config .pymarkdown.cfg scan {readme}", recursive = true }
+mypy-command = {var = "mypy {project} {tests}", recursive = true}
+symbex-typed-command = {var = "symbex -s --untyped -d {project} --check", recursive = true}
+symbex-documented-command = {var = "symbex -s --undocumented -d {project} --check", recursive = true}
+test-command = "pytest -x -s -vv -n auto"
+test-silent-command = "pytest -x --show-capture=no"
+
+[tool.taskipy.tasks]
+all = "task format && task lint && task test && task coverage"
+lint = "task format && task mypy && task symbex && task markdownlint"
+symbex = "task symbex-typed && task symbex-documented"
+check = { cmd = "{check-command}", help = "Run the ruff linting checks", use_vars = true }
+coverage = { cmd = "{coverage-test-command}", help = "Run test coverage monitoring", use_vars = true }
+coverage-silent = { cmd = "{coverage-test-command-silent}", help = "Run test coverage monitoring", use_vars = true }
+format = { cmd = "{format-command}", help = "Run the ruff formatter on source code", use_vars = true }
+format-fix = { cmd = "{fixformat-command}", help = "Run the ruff formatter to fix source code", use_vars = true}
+markdownlint = { cmd = "{markdownlint-command}", help = "Run the markdown linter on text files", use_vars = true }
+mypy = { cmd = "{mypy-command}", help = "Run the mypy type checks to find potential type errors", use_vars = true }
+symbex-typed = { cmd = "{symbex-typed-command}", help = "Run symbex for fully typed functions", use_vars = true }
+symbex-documented = { cmd = "{symbex-documented-command}", help = "Run symbex for documentation", use_vars = true }
+test = { cmd = "{test-command}", help = "Run tests with order randomization and distribution", use_vars = true }
+test-silent = { cmd = "{test-silent-command}", help = "Run tests silently without plugins", use_vars = true }
+mdtoc-readme = { cmd = "mdtoc ../README.md", help = "Generate the TOC for the README" }
 
 [tool.ruff]
 line-length = 79

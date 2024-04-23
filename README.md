@@ -9,7 +9,7 @@ TODO: cov badge
 
 ## 🐶 Overview of BOSCO
 
-BOSCO stands for Benchmarking Optimization Statistics Coverage Output -
+BOSCO stands for Benchmarking of Sorting & Computational Operations -
 but mostly is a way to include the name of the Allegheny College CIS
 Department's favorite dog in our work.
 

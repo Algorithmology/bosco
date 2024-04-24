@@ -1,7 +1,6 @@
+<img src="images/BOSCO_Icon.png" width="100" height="100">
 
 # BOSCO
-
-TODO: add logo
 
 [![Language:
 Python](https://img.shields.io/badge/Language-Python-blue.svg)](https://github.com/gkapfham/chasten/search?l=python)

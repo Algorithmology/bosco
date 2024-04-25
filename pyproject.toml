@@ -5,6 +5,9 @@ description = ""
 authors = ["Gregory M. Kapfhammer <gkapfham@allegheny.edu>"]
 readme = "README.md"
 
+[tool.poetry.scripts]
+bosco = "bosco.main:cli"
+
 [tool.poetry.dependencies]
 python = "^3.11"
 

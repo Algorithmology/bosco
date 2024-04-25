@@ -46,3 +46,6 @@ Number of doubles to execute: 5
 ```
 
 ### Graph Produced from Output
+
+![example_graph](https://github.com/Algorithmology/bosco/assets/70417208/0be0e695-f06c-490a-98df-cb3eaaf5ca07)
+

@@ -1,3 +1,5 @@
+"""Bosco runs benchmarks to assess the performance of Python functions."""
+
 import plotly.graph_objs as go
 import typer
 from plotly.subplots import make_subplots

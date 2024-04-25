@@ -19,7 +19,7 @@ def bosco(
 ) -> None:
     """Conduct a doubling experiment to measure the performance of list sorting for a specific algorithm."""
     console.print(
-        "\n🔬 Tool Support for Evaluating the Performance of Sorting Algorithms\n"
+        "\n:dog: Bosco is fetching out results!\n"
     )
     console.print(f"Path to the desired file: {file}\n")
     console.print(f"Name of the desired function: {function_name}\n")

@@ -1,4 +1,6 @@
-def compute_iterative_binary_search(values, target):
+from typing import List, Optional
+
+def compute_iterative_binary_search(values: List[int], target: int) -> bool:
     """Search a list using iterative binary search."""
     end = len(values) - 1
     start = 0
@@ -13,7 +15,7 @@ def compute_iterative_binary_search(values, target):
     return False
 
 
-def compute_recursive_binary_search(values, target, start=0, end=None):
+def compute_recursive_binary_search(values: List[int], target: int, start: int = 0, end: Optional[int] = None) -> bool:
     """Search a list using recursive binary search."""
     if end is None:
         end = len(values) - 1
@@ -28,7 +30,7 @@ def compute_recursive_binary_search(values, target, start=0, end=None):
         return r_binary_search(values, target, start, mid - 1)
 
 
-def compute_jump_search(search_list, x):
+def compute_jump_search(search_list: List[int], x: int) -> int:
     """Search a list using jump search function."""
     n = len(search_list)
     step = int(math.floor(math.sqrt(n)))
@@ -47,7 +49,7 @@ def compute_jump_search(search_list, x):
     return -1
 
 
-def compute_interpolation_search(search_list, x):
+def compute_interpolation_search(search_list: List[int], x: int) -> int:
     """Find indices of two corners."""
     lo = 0
     n = len(search_list)
@@ -79,7 +81,7 @@ def compute_interpolation_search(search_list, x):
     return -1
 
 
-def compute_linear_search(search_list, x):
+def compute_linear_search(search_list: List[int], x: int) -> int:
     """Search a list using linear search function."""
     for i in range(len(search_list)):
         if search_list[i] == x:
@@ -87,7 +89,7 @@ def compute_linear_search(search_list, x):
     return -1
 
 
-def compute_exponential_search(search_list, x):
+def compute_exponential_search(search_list: List[int], x: int) -> int:
     """Return the position of first occurrence of x in array."""
     # IF x is present at first
     # location itself

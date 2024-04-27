@@ -1,7 +1,9 @@
 """Confirm the correctness of the constants module."""
 
-import pytest
 from dataclasses import FrozenInstanceError
+
+import pytest
+
 from bosco.constants import Bosco
 
 

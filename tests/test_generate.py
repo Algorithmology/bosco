@@ -1,6 +1,8 @@
 import random
 from typing import List
+
 import pytest
+
 from bosco.generate import generate_random_container
 
 
@@ -32,7 +34,7 @@ def test_generate_random_container_elements_str():
     container = generate_random_container(size, type_="str")
     for element in container:
         assert isinstance(element, str)
-        assert len(element) == 10
+        assert len(element) == 10  # noqa: PLR2004
 
 
 def test_generate_random_container_randomness():

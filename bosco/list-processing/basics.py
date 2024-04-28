@@ -1,4 +1,4 @@
-"""Basic python functions for benchmarking the bosco tool."""
+"""Basic python functions."""
 
 import random
 from typing import List, Any

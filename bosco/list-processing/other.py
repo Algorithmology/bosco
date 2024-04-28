@@ -27,4 +27,8 @@ def list_symmetric_difference(list1: List[Any], list2: List[Any]) -> List[Any]:
 def list_concatenation(list1: List[Union[int, float, str]], list2: List[Union[int, float, str]]) -> List[Union[int, float, str]]:
     return list1 + list2
 
+def list_elementwise_addition(list1: List[Union[int, float]], list2: List[Union[int, float]]) -> List[Union[int, float]]:
+    return [x + y for x, y in zip(list1, list2)]
+
+
 

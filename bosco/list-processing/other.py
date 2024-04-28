@@ -30,5 +30,8 @@ def list_concatenation(list1: List[Union[int, float, str]], list2: List[Union[in
 def list_elementwise_addition(list1: List[Union[int, float]], list2: List[Union[int, float]]) -> List[Union[int, float]]:
     return [x + y for x, y in zip(list1, list2)]
 
+def list_pairwise_multiplication(list1: List[Union[int, float]], list2: List[Union[int, float]]) -> List[Union[int, float]]:
+    return [x * y for x, y in zip(list1, list2)]
+
 
 

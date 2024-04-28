@@ -25,12 +25,15 @@ def list_symmetric_difference(list1: List[Any], list2: List[Any]) -> List[Any]:
     return [x for x in list1 + list2 if (x not in list1) or (x not in list2)]
 
 def list_concatenation(list1: List[Union[int, float, str]], list2: List[Union[int, float, str]]) -> List[Union[int, float, str]]:
+    """Concatenates two lists into a single list."""
     return list1 + list2
 
 def list_elementwise_addition(list1: List[Union[int, float]], list2: List[Union[int, float]]) -> List[Union[int, float]]:
+    """Performs element-wise addition of two lists of numbers."""
     return [x + y for x, y in zip(list1, list2)]
 
 def list_pairwise_multiplication(list1: List[Union[int, float]], list2: List[Union[int, float]]) -> List[Union[int, float]]:
+    """Performs pairwise multiplication of two lists of numbers."""
     return [x * y for x, y in zip(list1, list2)]
 
 

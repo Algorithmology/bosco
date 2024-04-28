@@ -20,4 +20,8 @@ def list_intersection(list1: List[Any], list2: List[Any]) -> List[Any]:
     """Make a new list containing only the elements that are common to both input lists."""
     return [x for x in list1 if x in list2]
 
+def list_symmetric_difference(list1: List[Any], list2: List[Any]) -> List[Any]:
+    """Make a new list containing elements that are present in only one of the input lists"""
+    return [x for x in list1 + list2 if (x not in list1) or (x not in list2)]
+
 

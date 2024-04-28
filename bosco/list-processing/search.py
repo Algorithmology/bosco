@@ -3,21 +3,25 @@
 from typing import List, Optional
 import math
 
+
 def compute_iterative_binary_search(values: List[int], target: int) -> bool:
     """Search a list using iterative binary search."""
     end = len(values) - 1
     start = 0
-    while (start <= end):
+    while start <= end:
         mid = (start + end) // 2
         if values[mid] == target:
             return True
         elif values[mid] < target:
-                start = mid + 1
+            start = mid + 1
         elif values[mid] > target:
-                end = mid - 1
+            end = mid - 1
     return False
 
-def compute_recursive_binary_search(values: List[int], target: int, start: int = 0, end: Optional[int] = None) -> bool:
+
+def compute_recursive_binary_search(
+    values: List[int], target: int, start: int = 0, end: Optional[int] = None
+) -> bool:
     """Search a list using recursive binary search."""
     if end is None:
         end = len(values) - 1
@@ -30,6 +34,7 @@ def compute_recursive_binary_search(values: List[int], target: int, start: int =
         return compute_recursive_binary_search(values, target, mid + 1, end)
     elif values[mid] > target:
         return compute_recursive_binary_search(values, target, start, mid - 1)
+
 
 def compute_jump_search(search_list: List[int], x: int) -> int:
     """Search a list using jump search function."""
@@ -48,6 +53,7 @@ def compute_jump_search(search_list: List[int], x: int) -> int:
     if search_list[prev] == x:
         return prev
     return -1
+
 
 def compute_interpolation_search(search_list: List[int], x: int) -> int:
     """Find indices of two corners."""
@@ -73,12 +79,14 @@ def compute_interpolation_search(search_list: List[int], x: int) -> int:
             hi = pos - 1
     return -1
 
+
 def compute_linear_search(search_list: List[int], x: int) -> int:
     """Search a list using linear search function."""
     for i in range(len(search_list)):
         if search_list[i] == x:
             return i
     return -1
+
 
 def compute_exponential_search(search_list: List[int], x: int) -> int:
     """Return the position of first occurrence of x in array."""

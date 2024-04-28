@@ -24,4 +24,7 @@ def list_symmetric_difference(list1: List[Any], list2: List[Any]) -> List[Any]:
     """Make a new list containing elements that are present in only one of the input lists"""
     return [x for x in list1 + list2 if (x not in list1) or (x not in list2)]
 
+def list_concatenation(list1: List[Union[int, float, str]], list2: List[Union[int, float, str]]) -> List[Union[int, float, str]]:
+    return list1 + list2
+
 

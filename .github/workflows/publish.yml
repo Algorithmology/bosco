@@ -30,6 +30,9 @@ jobs:
     steps:
       - uses: actions/download-artifact@v3
       - name: Publish Package Distributions to PyPI
+        if: 
+          github.repository == 'Algorithmology/bosco' && github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          packages_dir: artifact/
+          user: __token__
+          password: ${{ secrets.pypi_password }}

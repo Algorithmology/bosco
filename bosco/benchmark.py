@@ -22,10 +22,8 @@ def run_sorting_algorithm(
     except (ImportError, AttributeError):
         raise ValueError(f"Could not import {algorithm} from {file_path}")
 
-    stmt = f"{algorithm_func.__name__}({array})"
     times = repeat(
-        setup=f"from {module_name} import {algorithm}",
-        stmt=stmt,
+        lambda: algorithm_func(array),
         repeat=3,
         number=10,
     )

@@ -1,8 +1,10 @@
 """Confirm the correctness of the constants module."""
 
-import pytest
 from dataclasses import FrozenInstanceError
-from bosco import constants
+
+import pytest
+
+from bosco.constants import Bosco
 
 
 @pytest.fixture
@@ -24,7 +26,7 @@ def bosco():
 
 def test_number_of_constants(bosco):
     """Confirm that there are the correct number of constants."""
-    assert len(bosco.__annotations__) == 9
+    assert len(bosco.__annotations__) == 10  # noqa: PLR2004
 
 
 def test_default_values(bosco):

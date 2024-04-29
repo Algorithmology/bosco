@@ -16,7 +16,7 @@ console = Console()
 def bosco(
     starting_size: int = typer.Option(100),
     number_doubles: int = typer.Option(5),
-    file: str = typer.Option("./bosco/sorting.py"),
+    file: str = typer.Option("./bosco/list_processing/sorting.py"),
     function_name: str = typer.Option("bubble_sort"),
 ) -> None:
     """Conduct a doubling experiment to measure the performance of list sorting for a specific algorithm."""

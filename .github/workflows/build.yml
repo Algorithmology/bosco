@@ -8,12 +8,12 @@ env:
 
 # Controls when the action will run
 # Workflow begins with push or PR events
-# Focuses on the master branch only
+# Focuses on the main branch only
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 # Create one single job
 # This job performs all of the necessary checks

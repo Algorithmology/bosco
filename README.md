@@ -29,14 +29,22 @@ poetry run bosco --starting-size 100 --number-doubles 5 --file bosco/sorting.py 
 
 The command uses the following inputs:
 
-- `--starting-size` for the initial list size to start the doubling experiment
+- `--starting-size` for the initial list size to start the doubling experiment.
 - `--number-doubles` for the number of times the input size will be doubled
-  during the doubling experiment
+  during the doubling experiment.
 - `--file` for the path to the file containing the sorting algorithm you want to
-  run the doubling experiment on
+  run the doubling experiment on.
 - `--function-name` for the name of the function containing the sorting
-  algorithm you want to test
+  algorithm you want to test.
 - `--element-type` for the data type to fill the randomly generated containers.
+
+This project supplies an array of Python files with list operations in them:
+
+* `bosco/list_processing/basics.py`: basic list operations
+* `bosco/list_processing/combination.py`: list operations involving combination
+* `bosco/list_processing/search.py`: searching algorithms for lists
+* `bosco/list_processing/sorting.py`: sorting algorithms for lists
+* `bosco/list_processing/other.py`: other uncategorized operations
 
 ## Example of command and output
 

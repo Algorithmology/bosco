@@ -1,6 +1,3 @@
-import random
-from typing import List
-
 import pytest
 
 from bosco.generate import generate_random_container

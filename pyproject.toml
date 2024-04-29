@@ -63,6 +63,10 @@ test = { cmd = "{test-command}", help = "Run tests with order randomization and 
 test-silent = { cmd = "{test-silent-command}", help = "Run tests silently without plugins", use_vars = true }
 mdtoc-readme = { cmd = "mdtoc ../README.md", help = "Generate the TOC for the README" }
 
+[[tool.mypy.overrides]]
+module = ["plotly", "plotly.graph_objs", "plotly.subplots", "tabulate"]
+ignore_missing_imports = true
+
 [tool.ruff]
 line-length = 79
 ignore = [

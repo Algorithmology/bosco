@@ -20,7 +20,67 @@ This is expanded on in this blog post: TODO
 
 ### 🖱️ How to Use BOSCO
 
-TODO
+To run the Bosco tool, you can call it from the main directory using a poetry
+command formatted like:
+
+```sh
+poetry run bosco --starting-size 100 --number-doubles 5 --file bosco/sorting.py --function-name bubble_sort --element-type int
+```
+
+The command uses the following inputs:
+
+- `--starting-size` for the initial list size to start the doubling experiment
+- `--number-doubles` for the number of times the input size will be doubled
+  during the doubling experiment
+- `--file` for the path to the file containing the sorting algorithm you want to
+  run the doubling experiment on
+- `--function-name` for the name of the function containing the sorting
+  algorithm you want to test
+- `--element-type` for the data type to fill the randomly generated containers.
+
+## Example of command and output
+
+### Command
+
+```terminal
+poetry run bosco --starting-size 100 --number-doubles 5 --file bosco/sorting.py --function-name bubble_sort --element-type int
+```
+
+### Output
+
+```terminal
+🐶 Bosco is fetching our results!
+
+Path to the desired file: ./bosco/sorting.py
+
+Name of the desired function: bubble_sort
+
+Starting size of the data container: 100
+
+Number of doubles to execute: 5
+
+Type of the generated elements: int
+
+📈 Here are the results from running the experiment!
+
+╒══════════════╤═════════════╤══════════════╤════════════════╕
+│   Input Size │   Best Case │   Worst Case │   Average Case │
+╞══════════════╪═════════════╪══════════════╪════════════════╡
+│          100 │     0.00005 │      0.00056 │        0.00022 │
+├──────────────┼─────────────┼──────────────┼────────────────┤
+│          200 │     0.00009 │      0.00169 │        0.00063 │
+├──────────────┼─────────────┼──────────────┼────────────────┤
+│          400 │     0.00024 │      0.00723 │        0.00258 │
+├──────────────┼─────────────┼──────────────┼────────────────┤
+│          800 │     0.00042 │      0.02986 │        0.01024 │
+├──────────────┼─────────────┼──────────────┼────────────────┤
+│         1600 │     0.00075 │      0.10597 │        0.03584 │
+╘══════════════╧═════════════╧══════════════╧════════════════╛
+```
+
+### Graph Produced from Output
+
+![example_graph](https://github.com/Algorithmology/bosco/assets/70417208/0be0e695-f06c-490a-98df-cb3eaaf5ca07)
 
 ### 📝 For Contributers
 
@@ -40,47 +100,49 @@ learned in the algorithm analysis course, by implementing a benchmarking
 framework that operates in the following fashion:
 
 - Accept as input one or more Python source code files that contain one or more
-functions that perform list processing. For the purposes of creating your
-benchmarking framework you can assume that all list-processing algorithms will
-implement some type of function that accepts as input a list and that it will be
-this list whose contents are doubled during the execution of a doubling
-experiment.
+  functions that perform list processing. For the purposes of creating your
+  benchmarking framework you can assume that all list-processing algorithms will
+  implement some type of function that accepts as input a list and that it will
+  be this list whose contents are doubled during the execution of a doubling
+  experiment.
 - Accept as input the fully-qualified name of a list-processing function that
-should be subject to benchmarking through a doubling experiment.
+  should be subject to benchmarking through a doubling experiment.
 - Accept as input the description of an input generation procedure that can
-automatically generate data suitable for the purposes of conducting a doubling
-experiment to evaluate the performance of the list-processing algorithm.
+  automatically generate data suitable for the purposes of conducting a doubling
+  experiment to evaluate the performance of the list-processing algorithm.
 - Automatically extract the list-processing function from the provided Python
-source code file(s) and then reflectively invoke the function to sort data that
-was automatically generated.
+  source code file(s) and then reflectively invoke the function to sort data
+  that was automatically generated.
 - In a series of automatically completed benchmarking rounds, the tool should
-conduct a doubling experiment by which it generates data sets of increasing size
-and then uses them to evaluate the performance of the list-processing algorithm.
+  conduct a doubling experiment by which it generates data sets of increasing
+  size and then uses them to evaluate the performance of the list-processing
+  algorithm.
 - The tool should produce diagnostic data that shows the execution time for each
-round of the doubling experiment, a computed version of the doubling ratio based
-on the collected data, and a statement about the likely worst-case time
-complexity suggested by the doubling ratio.
+  round of the doubling experiment, a computed version of the doubling ratio
+  based on the collected data, and a statement about the likely worst-case time
+  complexity suggested by the doubling ratio.
 - Your tool must be implemented with the Python programming language and use the
-Poetry system for managing dependencies and packaging.
+  Poetry system for managing dependencies and packaging.
 - Your tool must provide a command-line interface implemented through the use of
-Typer and offer command-line arguments that fully support its configuration.
+  Typer and offer command-line arguments that fully support its configuration.
 - Your tool can leverage Python source code that you previously implemented as a
-part of a course project as long as you carefully document the source of any
-Python code segments.
+  part of a course project as long as you carefully document the source of any
+  Python code segments.
 
 As you work to build and evaluate this system in a team-based fashion, please
 keep in mind the following considerations and tasks:
 
 - Organize your class, which comprises the team for this algorithm all-hands
-project, into sub-teams organized around completing the following task:
-    - **Infrastructure**: Using the provided GitHub repository for the `bosco`
+  project, into sub-teams organized around completing the following task:
+  - **Infrastructure**: Using the provided GitHub repository for the `bosco`
     project, this members of this sub-team will define and implement a process
     for reviewing and merging the tool's source code, setup and configure GitHub
     Actions, make releases of the tool to PyPI, and handle all other
     infrastructure-related tasks. This team is also responsible for setting up
     and managing the GitHub repository that will contain the list-processing
-    algorithms chosen by the members of the list-processing algorithms sub-team.
-    - **Benchmarking Framework**: The members of this sub-team will specify,
+    algorithms chosen by the members of the list-processing algorithms
+    sub-team.
+  - **Benchmarking Framework**: The members of this sub-team will specify,
     design, implement, and test the `bosco` tool, ensuring that it correctly
     runs a doubling experiment for any type of list-processing algorithm that
     meets the stated expectations of the tool. This team will work with the
@@ -90,7 +152,7 @@ project, into sub-teams organized around completing the following task:
     correctly for every one of the chosen algorithms. Finally, this team will
     assist the members of team tasked with the experimental and analytical
     evaluation, thereby ensuring that they can run the needed experiments.
-    - **List-Processing Algorithms**: The members of this sub-team will identify
+  - **List-Processing Algorithms**: The members of this sub-team will identify
     and commit a wide variety of list-processing algorithms, leveraging a
     separate GitHub repository that they work with the infrastructure team to
     create and manage. The members of this team are also responsible for running
@@ -99,9 +161,10 @@ project, into sub-teams organized around completing the following task:
     `bosco` does not work correctly for a specific list-processing algorithm,
     they will work with the members of the benchmarking framework team to ensure
     that the tool is correctly implemented to handle the identified issue. This
-    team will also assist the team members tasked with performing the experimental
-    and analytical evaluation to ensure that they can run the needed experiments.
-    - **Experimental and Analytical Evaluation**: The members of this sub-team
+    team will also assist the team members tasked with performing the
+    experimental and analytical evaluation to ensure that they can run the
+    needed experiments.
+  - **Experimental and Analytical Evaluation**: The members of this sub-team
     will complete the article published to the algorithm all-hands section of
     the Algorithmology web site. In addition to writing the article, the members
     of this team will perform a preliminary analytical evaluation of each
@@ -112,26 +175,26 @@ project, into sub-teams organized around completing the following task:
     will also write the final report and work with the course instructor to
     publish it to the Algorithmology web site by the following Friday.
 - Meet in your assigned groups to discuss how your team is going to design,
-implement, test, and evaluate your benchmarking framework. Make sure that you
-give your benchmarking framework a descriptive name that reflects its purpose.
+  implement, test, and evaluate your benchmarking framework. Make sure that you
+  give your benchmarking framework a descriptive name that reflects its purpose.
 - Discuss with your team members which GitHub repository you are going to use to
-coordinate your work. As you make this decision, please bear in mind that the
-final version of your framework will be transferred to the course's GitHub
-organization and so that it may be considered for use in follow-on projects.
+  coordinate your work. As you make this decision, please bear in mind that the
+  final version of your framework will be transferred to the course's GitHub
+  organization and so that it may be considered for use in follow-on projects.
 - Specify, design, and implement a benchmarking framework that supports the
-experimental evaluation of any list-processing algorithm function that you and
-your team members agree your benchmarking framework should support.
+  experimental evaluation of any list-processing algorithm function that you and
+  your team members agree your benchmarking framework should support.
 - Collect a group of list-processing algorithms and use them to conduct a series
-of doubling experiments that experimentally evaluate their performance with the
-ultimate goal of determining which algorithm is the fastest and characterizing
-the likely time complexity of each algorithm.
+  of doubling experiments that experimentally evaluate their performance with
+  the ultimate goal of determining which algorithm is the fastest and
+  characterizing the likely time complexity of each algorithm.
 - Write and publish on the course web site a blog post that explains (a) how you
-designed and implemented your benchmarking framework, (b) the list-processing
-functions that you chose to use in your doubling experiments, (c) the runtime
-results from your experimental study with the benchmarking framework that you
-implemented and (d) the running time results from an analytical evaluation that
-you conducted. Your blog post should clearly articulate (a) whether or not the
-experimental and analytical results for your function are in alignment with each
-other, (b) what is most likely to be the realistic runtime and true running time
-of a list-processing function, and (c) why you judge that your function has this
-runtime and running time.
+  designed and implemented your benchmarking framework, (b) the list-processing
+  functions that you chose to use in your doubling experiments, (c) the runtime
+  results from your experimental study with the benchmarking framework that you
+  implemented and (d) the running time results from an analytical evaluation
+  that you conducted. Your blog post should clearly articulate (a) whether or
+  not the experimental and analytical results for your function are in alignment
+  with each other, (b) what is most likely to be the realistic runtime and true
+  running time of a list-processing function, and (c) why you judge that your
+  function has this runtime and running time.

@@ -8,12 +8,16 @@ def generate_random_container(
     type_: str = "int",
 ) -> List[Union[int, float, str]]:
     """Generate a random list defined by the size and element type."""
+    random_list: List[Union[int, float, str]] = []
+
     if type_ == "int":
         # Generate a list of random integers within the range [1, size*size]
         random_list = [random.randint(1, size * size) for _ in range(size)]
     elif type_ == "float":
         # Generate a list of random floating-point numbers within the range [1, size*size]
-        random_list = [random.uniform(1, size * size) for _ in range(size)]
+        random_list = [
+            float(random.uniform(1, size * size)) for _ in range(size)
+        ]
     elif type_ == "str":
         # Generate a list of random strings of length 10 composed of letters and digits
         random_list = [

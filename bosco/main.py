@@ -1,10 +1,10 @@
 """Bosco runs benchmarks to assess the performance of Python functions."""
 
-import plotly.graph_objs as go
+import plotly.graph_objs as go  # type: ignore
 import typer
-from plotly.subplots import make_subplots
+from plotly.subplots import make_subplots  # type: ignore
 from rich.console import Console
-from tabulate import tabulate
+from tabulate import tabulate  # type: ignore
 
 from bosco import benchmark, generate
 

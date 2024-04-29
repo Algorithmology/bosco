@@ -3,11 +3,11 @@
 import os
 import sys
 from timeit import repeat
-from typing import List, Tuple
+from typing import Any, List, Tuple
 
 
 def run_sorting_algorithm(
-    file_path: str, algorithm: str, array: List[int]
+    file_path: str, algorithm: str, array: List[Any]
 ) -> Tuple[float, float, float]:
     """Run a sorting algorithm and profile it with the timeit package."""
     directory, file_name = os.path.split(file_path)

@@ -18,22 +18,24 @@ def bosco(
     number_doubles: int = typer.Option(5),
     file: str = typer.Option("./bosco/list_processing/sorting.py"),
     function_name: str = typer.Option("bubble_sort"),
+    element_type: str = typer.Option(
+        "int", help="Type of the generated elements (int, float, or str)"
+    ),
 ) -> None:
     """Conduct a doubling experiment to measure the performance of list sorting for a specific algorithm."""
-    console.print(
-        "\n:dog: Bosco is fetching our results!\n"
-    )
+    console.print("\n:dog: Bosco is fetching our results!\n")
     console.print(f"Path to the desired file: {file}\n")
     console.print(f"Name of the desired function: {function_name}\n")
     console.print(f"Starting size of the data container: {starting_size}\n")
     console.print(f"Number of doubles to execute: {number_doubles}\n")
+    console.print(f"Type of the generated elements: {element_type}\n")
     console.print("📈 Here are the results from running the experiment!\n")
 
     all_results = []
 
     for i in range(number_doubles):
         size = starting_size * (2**i)
-        data_to_sort = generate.generate_random_container(size)
+        data_to_sort = generate.generate_random_container(size, element_type)
         performance_data = benchmark.run_sorting_algorithm(
             file, function_name, data_to_sort
         )

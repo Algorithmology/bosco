@@ -5,7 +5,7 @@ import random
 from bosco.list_processing.basics import (get_first_item, get_last_item, get_list_length,
                             reverse_list, sort_list, append_item, remove_item,
                             count_item, clear_list, insert_item, delete_random_item,
-                            copy_list, list_in, extend, index, pop, min, max,
+                            copy_list, list_in, extend, index, pop, minimum, maximum,
                             filter_list, map_list, reduce_list, zip_lists, flatten_list)
 
 def test_get_first_item():
@@ -73,10 +73,10 @@ def test_pop():
     assert pop(lst, 0) == 1
 
 def test_min():
-    assert min([1, 2, 3]) == 1
+    assert minimum([1, 2, 3]) == 1
 
 def test_max():
-    assert max([1, 2, 3]) == 3
+    assert maximum([1, 2, 3]) == 3
 
 def test_filter_list():
     assert filter_list([1, 2, 3, 4], lambda x: x > 2) == [3, 4]

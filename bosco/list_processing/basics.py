@@ -92,12 +92,12 @@ def pop(lst: List[Any], index: int = -1) -> Any:
     return lst.pop(index)
 
 
-def min(lst: List[Any]) -> Any:
+def minimum(lst: List[Any]) -> Any:
     """Returns the smallest item in the list."""
     return min(lst)
 
 
-def max(lst: List[Any]) -> Any:
+def maximum(lst: List[Any]) -> Any:
     """Returns the largest item in the list."""
     return max(lst)
 
